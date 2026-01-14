@@ -1,76 +1,116 @@
 /*
-Theme Name: Twenty Twenty-Five
-Theme URI: https://wordpress.org/themes/twentytwentyfive/
-Author: the WordPress team
-Author URI: https://wordpress.org
-Description: Twenty Twenty-Five emphasizes simplicity and adaptability. It offers flexible design options, supported by a variety of patterns for different page types, such as services and landing pages, making it ideal for building personal blogs, professional portfolios, online magazines, or business websites. Its templates cater to various blog styles, from text-focused to image-heavy layouts. Additionally, it supports international typography and diverse color palettes, ensuring accessibility and customization for users worldwide.
-Requires at least: 6.7
-Tested up to: 6.9
-Requires PHP: 7.2
-Version: 1.4
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: twentytwentyfive
-Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks, block-styles, style-variations, accessibility-ready, blog, portfolio, news
+Theme Name: Justus Electrical
+Author: Giovanni / xAI Grok
+Description: Professional WordPress theme for electrical contractors in Massachusetts – Concord MA focus, 24/7 emergency, lead generation
+Version: 1.2
+Requires at least: 6.0
+Tested up to: 6.7
+Text Domain: justus-electrical
 */
 
-/*
- * IMPORTANT: This file is only served on the frontend when `SCRIPT_DEBUG` is enabled;
- * in most instances, the `style.min.css` file will be served. It is not recommended that you
- * use the Theme File Editor to modify this stylesheet. Instead, add the necessary style
- * overrides via "Additional CSS" in the Site Editor.
- */
-
-/*
- * Link styles
- * https://github.com/WordPress/gutenberg/issues/42319
- */
-a {
-	text-decoration-thickness: 1px !important;
-	text-underline-offset: .1em;
+:root {
+  --primary: #004AAD;     /* Deep blue – trust & professionalism */
+  --secondary: #FF6200;   /* Energetic orange – action & urgency */
+  --accent: #D4AF37;      /* Gold – premium quality */
+  --dark: #1A1A1A;
+  --light: #F8F9FA;
+  --heading-font: 'Montserrat', sans-serif;
+  --body-font: 'Roboto', sans-serif;
 }
 
-/* Focus styles */
-:where(.wp-site-blocks *:focus) {
-	outline-width: 2px;
-	outline-style: solid;
+* { box-sizing: border-box; margin:0; padding:0; }
+body {
+  font-family: var(--body-font);
+  color: var(--dark);
+  line-height: 1.65;
+  font-size: 1.05rem;
+}
+h1, h2, h3, h4 { font-family: var(--heading-font); color: var(--primary); }
+a { color: var(--secondary); text-decoration: none; }
+a:hover { color: var(--accent); }
+
+.container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+header {
+  background: white;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  padding: 18px 0;
+}
+.header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+.logo img { max-height: 68px; width: auto; }
+nav ul { display: flex; gap: 28px; list-style: none; }
+nav a { font-weight: 600; font-size: 1.05rem; }
+.emergency-cta {
+  background: var(--secondary);
+  color: white !important;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
-/* Increase the bottom margin on submenus, so that the outline is visible. */
-.wp-block-navigation .wp-block-navigation-submenu .wp-block-navigation-item:not(:last-child) {
-	margin-bottom: 3px;
+/* Hero */
+#hero {
+  background: linear-gradient(rgba(0,74,173,0.88), rgba(0,74,173,0.88)), url('images/hero-electrician.jpg') center/cover no-repeat fixed;
+  color: white;
+  text-align: center;
+  padding: 160px 20px 110px;
 }
-
-/* Increase the outline offset on the parent menu items, so that the outline does not touch the text. */
-.wp-block-navigation .wp-block-navigation-item .wp-block-navigation-item__content {
-	outline-offset: 4px;
+#hero h1 { font-size: 3.4rem; margin-bottom: 24px; }
+#hero p { font-size: 1.45rem; margin-bottom: 35px; max-width: 780px; margin-left: auto; margin-right: auto; }
+.cta-btn {
+  display: inline-block;
+  padding: 16px 38px;
+  border-radius: 50px;
+  font-size: 1.22rem;
+  font-weight: 700;
+  margin: 12px 10px;
 }
+.cta-primary { background: var(--secondary); color: white; }
+.cta-secondary { background: var(--accent); color: var(--dark); }
 
-/* Remove outline offset from the submenus, otherwise the outline is visible outside the submenu container. */
-.wp-block-navigation .wp-block-navigation-item ul.wp-block-navigation__submenu-container .wp-block-navigation-item__content {
-	outline-offset: 0;
+/* General sections */
+section { padding: 90px 0; }
+section h2 { text-align: center; font-size: 2.9rem; margin-bottom: 55px; color: var(--primary); }
+
+/* Services grid */
+#services { background: var(--light); }
+.service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; }
+.service-card {
+  background: white;
+  padding: 35px 25px;
+  border-radius: 14px;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.07);
+  text-align: center;
+  transition: all 0.28s ease;
 }
+.service-card:hover { transform: translateY(-12px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
 
-/*
- * Progressive enhancement to reduce widows and orphans
- * https://github.com/WordPress/gutenberg/issues/55190
- */
-h1, h2, h3, h4, h5, h6, blockquote, caption, figcaption, p {
-	text-wrap: pretty;
+/* Emergency – high conversion */
+#emergency {
+  background: var(--secondary);
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
 }
+#emergency .phone-number { font-size: 3.8rem; font-weight: 800; margin: 25px 0; letter-spacing: -1px; }
 
-/*
- * Change the position of the more block on the front, by making it a block level element.
- * https://github.com/WordPress/gutenberg/issues/65934
-*/
-.more-link {
-	display: block;
+/* Footer */
+footer {
+  background: var(--dark);
+  color: white;
+  padding: 70px 0 30px;
+  text-align: center;
 }
+footer a { color: var(--accent); }
 
-/*
- * Prevents unnecessary scrollbars while handling long lines of preformatted text.
- * https://core.trac.wordpress.org/ticket/63875
- */
-:where(pre) {
-	overflow-x: auto;
+/* Responsive */
+@media (max-width: 768px) {
+  #hero { padding: 110px 15px 70px; }
+  #hero h1 { font-size: 2.6rem; }
+  nav ul { flex-direction: column; gap: 18px; text-align: center; }
 }
